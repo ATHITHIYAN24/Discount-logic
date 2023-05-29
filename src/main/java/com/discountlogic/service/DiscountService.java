@@ -1,6 +1,7 @@
-package com.discount.logic.discountlogic.service;
+package com.discountlogic.service;
 
-import com.discount.logic.discountlogic.data.PurchaseDetails;
+import com.discountlogic.data.PurchaseDetails;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 

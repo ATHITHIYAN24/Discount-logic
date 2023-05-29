@@ -1,5 +1,6 @@
-package com.discount.logic.discountlogic.data;
+package com.discountlogic.data;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,12 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class PurchaseDetails {
 
+    @NotNull
     private String email;
+
+    @NotNull
     private BigDecimal billAmount;
+
+    @NotNull
+    private String productsType;
 }

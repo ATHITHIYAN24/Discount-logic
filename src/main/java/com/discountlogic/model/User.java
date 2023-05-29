@@ -1,4 +1,4 @@
-package com.discount.logic.discountlogic.model;
+package com.discountlogic.model;
 
 import lombok.*;
 
@@ -17,14 +17,14 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "email")
+    @Column(name = "email",unique = true)
     private String email;
 
     @Column(name = "user_type")
     private String userType;
 
-    @Column(name = "purchase_start_date")
-    private LocalDate purchaseStartDate;
+//    @Column(name = "purchase_start_date")
+//    private LocalDate purchaseStartDate;
 
 
     public User(String name, String email, String userType, LocalDate purchaseStartDate) {

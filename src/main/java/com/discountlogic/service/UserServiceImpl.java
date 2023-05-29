@@ -1,9 +1,11 @@
-package com.discount.logic.discountlogic.service;
+package com.discountlogic.service;
 
-import com.discount.logic.discountlogic.model.User;
-import com.discount.logic.discountlogic.repository.UserRepository;
+import com.discountlogic.model.User;
+import com.discountlogic.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired

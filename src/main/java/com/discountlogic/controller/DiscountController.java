@@ -1,7 +1,7 @@
-package com.discount.logic.discountlogic.controller;
+package com.discountlogic.controller;
 
-import com.discount.logic.discountlogic.data.PurchaseDetails;
-import com.discount.logic.discountlogic.service.DiscountService;
+import com.discountlogic.data.PurchaseDetails;
+import com.discountlogic.service.DiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
