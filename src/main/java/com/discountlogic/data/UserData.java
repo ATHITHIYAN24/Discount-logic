@@ -12,5 +12,5 @@ public class UserData {
     private String name;
     private String email;
     private String userType;
-    private String date;
+    private String purchaseStartDate;
 }

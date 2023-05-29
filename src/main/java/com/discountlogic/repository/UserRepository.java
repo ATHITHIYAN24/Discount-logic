@@ -1,11 +1,11 @@
 package com.discountlogic.repository;
 
-import com.discountlogic.model.User;
+import com.discountlogic.model.UserDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,Long> {
+public interface UserRepository extends JpaRepository<UserDetails,Long> {
 
-    User findByEmail(String email);
+    UserDetails findByEmail(String email);
 }

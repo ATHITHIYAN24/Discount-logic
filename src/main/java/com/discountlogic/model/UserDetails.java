@@ -3,13 +3,13 @@ package com.discountlogic.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "user")
 @Entity
-public class User {
+public class UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,11 +23,11 @@ public class User {
     @Column(name = "user_type")
     private String userType;
 
-//    @Column(name = "purchase_start_date")
-//    private LocalDate purchaseStartDate;
+    @Column(name = "purchase_start_date")
+    private Date purchaseStartDate;
 
 
-    public User(String name, String email, String userType, LocalDate purchaseStartDate) {
+    public UserDetails(String name, String email, String userType, Date purchaseStartDate) {
         this.name = name;
         this.email = email;
         this.userType = userType;

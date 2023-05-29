@@ -1,9 +1,9 @@
 package com.discountlogic.service;
 
-import com.discountlogic.model.User;
+import com.discountlogic.model.UserDetails;
 
 public interface UserService {
 
-    public User saveUserDetails(User user);
+    public UserDetails saveUserDetails(UserDetails userDetails);
 
 }

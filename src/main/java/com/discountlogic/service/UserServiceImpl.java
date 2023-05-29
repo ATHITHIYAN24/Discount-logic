@@ -1,6 +1,6 @@
 package com.discountlogic.service;
 
-import com.discountlogic.model.User;
+import com.discountlogic.model.UserDetails;
 import com.discountlogic.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Override
-    public User saveUserDetails(User user) {
-        return userRepository.save(user);
+    public UserDetails saveUserDetails(UserDetails userDetails) {
+        return userRepository.save(userDetails);
     }
 }
