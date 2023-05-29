@@ -1,6 +1,7 @@
 package com.discountlogic.service;
 
 import com.discountlogic.data.PurchaseDetails;
+import com.discountlogic.exception.UserNotFoundException;
 import com.discountlogic.repository.UserRepository;
 import com.discountlogic.model.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,13 @@ public class DiscountServiceImpl implements DiscountService {
     @Autowired
     UserRepository userRepository;
     @Override
-    public BigDecimal calculateFinalAmount(PurchaseDetails purchaseDetails) {
+    public BigDecimal calculateFinalAmount(PurchaseDetails purchaseDetails) throws UserNotFoundException {
 
         BigDecimal billAmount= purchaseDetails.getBillAmount();
         UserDetails userDetails = userRepository.findByEmail(purchaseDetails.getEmail());
+        if(userDetails==null) {
+            throw new UserNotFoundException("User Not Found");
+        }
         BigDecimal discountAmountPerHundredDollar= new BigDecimal("5");
 
 
