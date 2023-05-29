@@ -1,14 +1,12 @@
 package com.discount.logic.discountlogic.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "user")
 @Entity
 public class User {
@@ -29,4 +27,10 @@ public class User {
     private LocalDate purchaseStartDate;
 
 
+    public User(String name, String email, String userType, LocalDate purchaseStartDate) {
+        this.name = name;
+        this.email = email;
+        this.userType = userType;
+        this.purchaseStartDate = purchaseStartDate;
+    }
 }
