@@ -30,7 +30,6 @@ mvn spring-boot:run
 ```
 
 ### Swagger
-Use this url to check with swagger after launching the application : (http://localhost:8080/swagger-ui.html#!)
-
+Use this url to check with swagger after launching the application : (http://localhost:8080/swagger-ui/index.html#/)
  <img width="1042" alt="petclinic-screenshot" src="https://user-images.githubusercontent.com/69898824/130680964-f5892d00-f4a4-40e1-94d6-d35d4e7c5f46.png">
 
