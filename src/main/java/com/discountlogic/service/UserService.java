@@ -1,9 +1,12 @@
 package com.discountlogic.service;
 
+import com.discountlogic.data.UserData;
 import com.discountlogic.model.UserDetails;
+
+import java.text.ParseException;
 
 public interface UserService {
 
-    public UserDetails saveUserDetails(UserDetails userDetails);
+     UserDetails saveUserDetails(UserData userData) throws ParseException;
 
 }

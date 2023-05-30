@@ -1,10 +1,8 @@
-package com.discount.logic.discountlogic.data;
+package com.discountlogic.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.validation.constraints.Email;
 
 @Getter
 @Setter

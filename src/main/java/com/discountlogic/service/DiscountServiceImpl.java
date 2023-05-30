@@ -2,6 +2,8 @@ package com.discountlogic.service;
 
 import com.discountlogic.data.PurchaseDetails;
 import com.discountlogic.exception.UserNotFoundException;
+import com.discountlogic.enumclasses.ProductsType;
+import com.discountlogic.enumclasses.UserType;
 import com.discountlogic.repository.UserRepository;
 import com.discountlogic.model.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,35 +20,35 @@ public class DiscountServiceImpl implements DiscountService {
 
     @Autowired
     UserRepository userRepository;
+
     @Override
     public BigDecimal calculateFinalAmount(PurchaseDetails purchaseDetails) throws UserNotFoundException {
 
-        BigDecimal billAmount= purchaseDetails.getBillAmount();
+        BigDecimal billAmount = purchaseDetails.getBillAmount();
         UserDetails userDetails = userRepository.findByEmail(purchaseDetails.getEmail());
-        if(userDetails==null) {
+        if (userDetails == null) {
             throw new UserNotFoundException("User Not Found");
         }
-        BigDecimal discountAmountPerHundredDollar= new BigDecimal("5");
+        BigDecimal discountAmountPerHundredDollar = new BigDecimal("5");
 
-
-        if(purchaseDetails.getProductsType() != "GROCERY") {
-            if(userDetails.getUserType().equals("employee")) {
-                billAmount = nonGroceryProductDiscount(billAmount,BigDecimal.valueOf(30l));
-            } else if (userDetails.getUserType().equals("affiliate")) {
-                billAmount = nonGroceryProductDiscount(billAmount,BigDecimal.valueOf(10l));
-            } else if (userDetails.getUserType().equals("customer") ) {
+        if (!purchaseDetails.getProductsType().equalsIgnoreCase(String.valueOf(ProductsType.GROCERY))) {
+            if (userDetails.getUserType().equalsIgnoreCase(String.valueOf(UserType.EMPLOYEE))) {
+                billAmount = nonGroceryProductDiscount(billAmount, BigDecimal.valueOf(30l));
+            } else if (userDetails.getUserType().equalsIgnoreCase(String.valueOf(UserType.AFFILIATE))) {
+                billAmount = nonGroceryProductDiscount(billAmount, BigDecimal.valueOf(10l));
+            } else if (userDetails.getUserType().equalsIgnoreCase(String.valueOf(UserType.CUSTOMER))) {
                 long noOfYears = userDetails.getPurchaseStartDate().toInstant()
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate().until(LocalDate.now(), ChronoUnit.YEARS);
-                if(noOfYears > 2) {
-                    billAmount = nonGroceryProductDiscount(billAmount,BigDecimal.valueOf(5l));
+                if (noOfYears >= 2) {
+                    billAmount = nonGroceryProductDiscount(billAmount, BigDecimal.valueOf(5l));
                 }
             }
         }
         BigDecimal commonDiscountAmount = billAmount.divide(BigDecimal.valueOf(100l), RoundingMode.FLOOR)
                 .multiply(discountAmountPerHundredDollar);
 
-        return billAmount.subtract(commonDiscountAmount) ;
+        return billAmount.subtract(commonDiscountAmount);
     }
 
     private BigDecimal nonGroceryProductDiscount(BigDecimal billAmount,BigDecimal percentage) {
